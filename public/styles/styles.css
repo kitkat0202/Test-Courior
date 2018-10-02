@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant|Quattrocento+Sans');
+
+:root {
+  --trans: all 300ms ease-in-out;
+  --title: 'Cormorant', serif;
+  --text: 'Quattrocento Sans', sans-serif;
+  --maincolor: #00838f;
+  --mainclose: #00B4C5;
+  --mainlight: #01E6FB;
+  --maindark: #004F56;
+}
+
+body, html {
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 100vh;
+  font-family: var(--text);
+  position: relative;
+  background-color: #eee;
+}
+
+header, main, footer {
+	padding-left: 300px;
+}
+
+#remove {
+  float: right;
+}
+
+.title {
+  font-family: var(--title);
+  letter-spacing: 3px;
+}
+
+.letter-space-1 {
+  letter-spacing: 1px;
+}
+
+.disappear {
+  display: none;
+}
+
+.padding-top-50 {
+  padding-top: 50px;
+}
+
+.marg-up-10 {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.bolder {
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px #555;
+}
+
+.waves-effect.waves-cyan .waves-ripple {
+  background-color: var(--maincolor);
+}
+
+/* ////////////////////////////////////// */
+/* //////////// Login page ////////////// */
+/* ////////////////////////////////////// */
+#login-background {
+  position: fixed;
+  object-fit: cover;
+  opacity: .5;
+}
+
+#index-body {
+  height: 400px;
+  width: 600px;
+  min-width: 310px;
+  background-color: #0000008f;
+  margin-top: 10%;
+  padding: 8px 0;
+  border-radius: 8px;
+}
+
+.login-sectioner,
+.first-sectioner {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* override google preferences - if we are using GOOGLE LOGIN */
+.abcRioButton {
+  margin: 70px auto;
+}
+
+.abcRioButtonContents {
+  font-weight: bolder;
+}
+
+span.abcRioButtonContents {
+  font-size: 15px !important;
+}
+
+
+/* ////////////////////////////////////// */
+/* ////////////// top nav /////////////// */
+/* ////////////////////////////////////// */
+nav {
+  position: relative;
+}
+
+.left-nav,
+.left-nav-md {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 250px;
+  height: 64px;
+  z-index: 2;
+}
+
+.left-nav-md {
+  width: 170px;
+}
+
+.dropdown-trigger {
+  width: 150px;
+}
+
+.left-nav a {
+  margin: -5px 10px 0 10px;
+  height: 45px;
+  border: none;
+  box-shadow: none;
+}
+
+
+/* ////////////////////////////////////// */
+/* /////////////// sidenav ////////////// */
+/* ////////////////////////////////////// */
+.sidenav-background {
+  position: relative;
+  opacity: .7;
+}
+
+.background:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  -moz-transition: background .3s linear;
+  -webkit-transition: background .3s linear;
+  -o-transition: background .3s linear;
+  transition: background .3s linear;
+}
+
+.sidenav .user-view {
+  margin-bottom: 0;
+}
+
+.sidenav li>a {
+  margin: 0;
+  padding: 5px 32px;
+  font-size: 18px;
+  line-height: 38px;
+}
+
+.sidenav .divider {
+  margin: 0;
+}
+
+/* ////////////////////////////////////// */
+/* ///////////// Main Area ////////////// */
+/* ////////////////////////////////////// */
+.title-hr {
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+#settings-area,
+#about-us-area,
+#new-mail-list-area,
+#user-mail-list-area,
+#new-templates-area,
+#user-templates-area,
+#preview-area {
+  padding: 10px 60px 10px 360px;
+  overflow: auto;
+  height: 90%;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+  background-color: #eee;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #777;
+}
+
+/* First Page */
+.welcome {
+  margin-top: 100px;
+}
+
+/* New Template */
+.modal-temp-title {
+  text-transform: capitalize;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.card-template {
+  position: relative;
+  background: #000000b3;
+}
+
+.card-template:hover,
+.choose-group:hover {
+  cursor: pointer;
+}
+
+.card-template::before, .card-template::after {
+  content: '';
+  position: absolute;
+  top: 1.25em;
+  bottom: 1.25em;
+  left: 1.25em;
+  right: 1.25em;
+  opacity: 1;
+  transition: -webkit-transform ease-out 250ms;
+  transition: transform ease-out 250ms;
+  transition: transform ease-out 250ms, -webkit-transform ease-out 250ms;
+}
+
+.card-template::before {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  -webkit-transform: scale(0, 1);
+          transform: scale(0, 1);
+}
+.card-template::after {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  -webkit-transform: scale(1, 0);
+          transform: scale(1, 0);
+}
+.card-template:hover::before {
+  -webkit-transform: scale(1.05, 1);
+          transform: scale(1.05, 1);
+}
+.card-template:hover::after {
+  -webkit-transform: scale(1, 1.05);
+          transform: scale(1, 1.05);
+}
+
+.card-img {
+  max-width: 100%;
+  display: block;
+  transition: opacity ease-out 250ms;
+}
+
+.card:hover .card-img {
+  opacity: .4;
+}
+
+/* About Page */
+.font-p {
+  font-size: 24px;
+  line-height: 50px;
+}
+
+/* User Mail Group */
+.card-mail-title {
+  text-transform: uppercase;
+}
+
+.card-mail {
+  transition: opacity ease-out 250ms;
+  height: 210px;
+  overflow:hidden;
+  border-right: 10px solid #546e7a;
+  border-bottom: 10px solid #546e7a;
+}
+
+.card-mail:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 0 #888;
+  margin-top: -2px;
+  margin-left: -2px;
+}
+
+.prev-and-form {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-div {
+  height: 100%;
+  border-right: 1px solid #888;
+}
+
+.prev-div {
+  height: 100%;
+
+}
+
+/* ////////////////////////////////////// */
+/* //////////// Media Queries /////////// */
+/* ////////////////////////////////////// */
+@media only screen and (max-width : 992px) {
+	header, main, footer {
+		padding-left: 0;
+  }
+  
+  #settings-area,
+  #about-us-area,
+  #new-mail-list-area,
+  #user-mail-list-area,
+  #new-templates-area,
+  #user-templates-area,
+  #preview-area {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #login-body {
+    margin-top: 30%;
+  }
+
+  #login-buttons div .btn-large {
+    width: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  #login-body {
+    margin-top: 40%;
+    width: 90%;
+    height: 350px;
+  }
+
+  #login-buttons {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 425px) {
+  #login-body {
+    width: 98%;
+    margin-left: 1%;
+    height: 300px;
+  }
+
+  #login-buttons {
+    margin-top: 40px;
+  }
+
+  #login-buttons div .btn-large {
+    width: 135px;
+  }
+
+  .left-nav-md {
+    width: 110px;
+  }
+
+  .dropdown-trigger {
+    width: 90px;
+  }
+
+  .font-p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}

@@ -1,0 +1,51 @@
+<!-- Changing background image -->
+<img src="https://source.unsplash.com/1900x1080/?books" alt="background" id="login-background">
+
+
+<!-- ///////////////////// REMEMBER TO REMOVE //////////////////////////////////// -->
+<a href="/first" id="remove" class="waves-effect waves-light btn-large cyan darken-3">main page</a>
+<!-- ///////////////////// REMEMBER TO REMOVE //////////////////////////////////// -->
+
+
+<!-- FIRST PAGE: ask users to Sign-up or Login -->
+<div class="container" id="index-body">
+    <h1 class="title center white-text">Courier</h1>
+    <h6 class="letter-space-1 center white-text">Simply click and communicate</h6>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+</div>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+    var user = {}
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile()
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token
+        var id = profile.getId()
+
+        user.firstName = profile.getGivenName()
+        user.lastName = profile.getFamilyName()
+        user.googleUser = profile.getEmail()
+        user.img = profile.getImageUrl()
+
+        $.get(`/api/user/${user.googleUser}`, function(data) {
+            if(data) {
+                user.id = data.id
+                sessionStorage.removeItem('courieruser')
+                sessionStorage.setItem('courieruser', JSON.stringify(user))
+                window.location = window.location.href+"first"
+                
+            } else {
+                $.post("/api/user", user, function(result) {
+                    onSignIn(googleUser)
+                })
+            }
+        })
+
+    }
+</script>
+
+<script src="js/html.js"></script>
