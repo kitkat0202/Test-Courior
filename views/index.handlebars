@@ -19,6 +19,7 @@
 
 <script>
     var user = {}
+    console.log(window.location.href)
     function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile()
@@ -36,7 +37,7 @@
                 user.id = data.id
                 sessionStorage.removeItem('courieruser')
                 sessionStorage.setItem('courieruser', JSON.stringify(user))
-                window.location = window.location.href+"first"
+                window.location = "/first"
                 
             } else {
                 $.post("/api/user", user, function(result) {

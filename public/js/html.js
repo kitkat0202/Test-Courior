@@ -261,7 +261,7 @@ $(document).on("click", ".choose-group", function() {
     sessionStorage.removeItem('courierchosen')
     sessionStorage.setItem('courierchosen', JSON.stringify(choices))
 
-    window.location = `http://localhost:3000/preview`
+    window.location = `/preview`
 })
 
 ///////////////////////////////

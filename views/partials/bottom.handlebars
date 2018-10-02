@@ -7,7 +7,7 @@
 
 <script src="js/html.js"></script>
 <script>
-    var instance
+    console.log(window.location.hostname)
     document.addEventListener("DOMContentLoaded", function() {
         // sidnav
         var sidnav = document.querySelectorAll(".sidenav")
@@ -28,7 +28,7 @@
 
     $(function() {
         if (sessionStorage.getItem("courieruser") === null) {
-            window.location = "http://localhost:3000/"
+            window.location = "/"
         } else {
             var user = JSON.parse(sessionStorage.getItem('courieruser'))
                 if (user.img !== "") {
