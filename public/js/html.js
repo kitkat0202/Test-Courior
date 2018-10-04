@@ -266,6 +266,32 @@ $(document).on("click", ".choose-group", function() {
     window.location = `/preview`
 })
 
+//////////////////////////////
+//////// Preview Page /////////
+///////////////////////////////
+if (window.location.pathname === "/preview" && sessionStorage.getItem('courierchosen') === null) {
+    window.location = "/newtemp"
+} else if (window.location.pathname === "/preview") {
+    $(".preview-group-title").text(prevData.grouplable)
+    $.get(`/api/newtemp/${prevData.template}`, function(data) {
+        $("#temp-area-prev").html(data.template)
+    })
+}
+
+$("#user-temp-lable").on("keyup", function() {
+    if($("#user-temp-lable").val().trim().length > 0) {
+        $("#prev-submit-btn").removeClass("disabled")
+    } else {
+        $("#prev-submit-btn").addClass("disabled")
+    }
+})
+
+$("#prev-submit-btn").on("click", function() {
+    var userTemp = $("#temp-area-prev").html()
+    var userlable = $("#user-temp-lable").val().trim()
+    window.location = "/sending"
+})
+
 ///////////////////////////////
 /////// USER MAIL LIST ////////
 ///////////////////////////////
