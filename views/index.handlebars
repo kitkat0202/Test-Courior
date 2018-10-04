@@ -34,7 +34,7 @@
                     console.log(results)
                 });
                 if (data.emailReqLink) {
-                    if (sessionStorage.getItem("couriersignin") !== null) {
+                    if (sessionStorage.getItem("couriersignin") !== false) {
                         user.emailReqLink = data.emailReqLink
                         sessionStorage.removeItem('courieruser')
                         sessionStorage.setItem('courieruser', JSON.stringify(user))
