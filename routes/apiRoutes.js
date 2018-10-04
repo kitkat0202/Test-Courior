@@ -162,6 +162,20 @@ module.exports = function(app) {
     });
   });
 
+  // Find New Templat HTML
+  app.get("/api/newtemp/:temp", function (req, res) {
+    db.Newtemps.findOne({
+      where: {
+        lable: req.params.temp
+      }
+    }).then(function (result) {
+      res.json(result);
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    });
+  });
+
   var oAuth2Client;
   //GOOGLE SIDE INSTALLATION
   app.get("/api/installation/authUrl", function (req, res) {
