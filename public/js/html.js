@@ -9,6 +9,7 @@ var manualRowCount = 1 // needed for create new manual rows
 $(".logoff").on("click", function() {
     sessionStorage.removeItem('courieruser')
     sessionStorage.removeItem('courierchosen')
+    sessionStorage.removeItem('couriersignin')
     var auth2 = gapi.auth2.getAuthInstance()
     auth2.signOut().then(function () {
       console.log('User signed out.')
@@ -264,6 +265,62 @@ $(document).on("click", ".choose-group", function() {
 
     window.location = `/preview`
 })
+
+///////////////////////////////
+//////// Preview Page /////////
+///////////////////////////////
+if (window.location.pathname === "/preview" && sessionStorage.getItem('courierchosen') === null) {
+    window.location = "/newtemp"
+} else if (window.location.pathname === "/preview") {
+    $(".preview-group-title").text(prevData.grouplable)
+    $.get(`/api/newtemp/${prevData.template}`, function(data) {
+        $("#temp-area-prev").html(data.template)
+    })
+}
+
+$("#user-temp-lable").on("keyup", function() {
+    if($("#user-temp-lable").val().trim().length > 0) {
+        $("#prev-submit-btn").removeClass("disabled")
+    } else {
+        $("#prev-submit-btn").addClass("disabled")
+    }
+})
+
+// $("#prev-submit-btn").on("click", function() {
+//     var userTemp = $("#temp-area-prev").html()
+//     var userlable = $("#user-temp-lable").val().trim()
+//     var mailList = [
+//         {
+//             "name":"Dale Padelford",
+//             "email":"jeffymenda@gmail.com"
+//         },
+//         {
+//             "name":"Jeremy You",
+//             "email":"cefi@vamoose.it"
+//         },
+//         {
+//             "name":"Cefi Menda",
+//             "email":"cefimenda@intellioninc.com"
+//         }
+//     ]
+//     var emailInfo = {
+//         subject:"some subject ###fname###",
+//         body:userTemp,
+//         alias:"I am great"
+//     }
+//     $.get("/api/reqLink/" + JSON.parse(sessionStorage.getItem("courieruser")).id, function (response) {
+//         $.post(response,{mailList,emailInfo},function(response){
+//             console.log("Mails Sent");
+//             console.log(response);
+//             //TODO CREATE AN EMAIL SENT MESSAGE ON SCREEN
+//         })
+//     });
+// })
+
+///////////////////////////////
+/////// USER TEMPLATE ////////
+///////////////////////////////
+
 
 ///////////////////////////////
 /////// USER MAIL LIST ////////
