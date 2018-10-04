@@ -202,26 +202,26 @@ module.exports = function(app) {
   });
 
   // Create Mail Group
-  app.post("/api/mailgroup", function (req, res) {
-    db.MailGroup.create(req.body)
-      .then(function (result) {
-        res.json(result);
-      })
-      .catch(function (err) {
-        res.status(400).json(err);
-      });
-  });
+  // app.post("/api/mailgroup", function (req, res) {
+  //   db.MailGroup.create(req.body)
+  //     .then(function (result) {
+  //       res.json(result);
+  //     })
+  //     .catch(function (err) {
+  //       res.status(400).json(err);
+  //     });
+  // });
 
-  // Create Mail Group
-  app.post("/api/maillist", function (req, res) {
-    db.MailList.create(req.body)
-      .then(function (result) {
-        res.json(result);
-      })
-      .catch(function (err) {
-        res.status(400).json(err);
-      });
-  });
+  // // Create Mail Group
+  // app.post("/api/maillist", function (req, res) {
+  //   db.MailList.create(req.body)
+  //     .then(function (result) {
+  //       res.json(result);
+  //     })
+  //     .catch(function (err) {
+  //       res.status(400).json(err);
+  //     });
+  // });
   
   // Get emailReqLink for user
   app.get("/api/reqLink/:id", function (req, res) {
