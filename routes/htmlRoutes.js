@@ -16,7 +16,9 @@ module.exports = function (app) {
     // load Login page or all other pages
 
     app.get("/:pages", function(req, res) {
-        var pageArr = ["about", "newmail", "newtemp", "setting", "usermail", "usertemp", "", "first", "index", "preview", "sending"]
+        console.log("hello");
+        
+        var pageArr = ["about", "newmail", "newtemp", "setting", "usermail", "usertemp", "", "first", "index", "preview"]
         var pages = req.params.pages
         if (pageArr.indexOf(pages) > -1) {
             res.render(pages)
