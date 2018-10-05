@@ -6,6 +6,7 @@
 <script src="js/sheet.js"></script>
 
 <script src="js/html.js"></script>
+<script src="js/sendMail.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // sidnav
@@ -41,10 +42,6 @@
             if (user.emailReqLink === undefined && window.location.pathname !== "/installation") {
                 window.location = "/installation"
             }
-        }
-
-        if (window.location.pathname === "/preview" && sessionStorage.getItem('courierchosen') === null) {
-            window.location = "/newtemp"
         }
     })
 </script>

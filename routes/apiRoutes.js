@@ -1,4 +1,6 @@
 var db = require("../models");
+var request = require("request");
+const axios = require('axios')
 
 module.exports = function(app) {
 
@@ -126,7 +128,6 @@ module.exports = function(app) {
     });
   });
 
-
   // Find Mail Group and List for user
   app.get("/api/mailgroup/:user", function(req, res) {
     var query = { Userid: req.params.user };
@@ -153,6 +154,17 @@ module.exports = function(app) {
     .catch(function(err) {
       res.status(400).json(err);
     });
+  });
+
+  // Create User Temp
+  app.post("/api/usertemp", function(req, res) {
+    db.Temps.create(req.body)
+      .then(function(result) {
+        res.json(result);
+      })
+      .catch(function(err) {
+        res.status(400).json(err);
+      });
   });
 
   var oAuth2Client;
@@ -193,17 +205,45 @@ module.exports = function(app) {
       }
     });
   });
-  
-  // Get emailReqLink for user
-  app.get("/api/reqLink/:id", function (req, res) {
+
+  // Sending Emails
+
+  app.post("/api/sendEmail", function (req, res) {
+    let mailList;
+    let emailInfo;
+
+    mailList = req.body.package.mailList;
+    emailInfo = req.body.package.emailInfo;
     db.User.findOne({
       where: {
-        id: req.params.id
+        id: req.body.userId
       }
     }).then(function (result) {
-      if(result){
-        res.send(result.emailReqLink);
-      }else{
+      if (result) {
+        var postData = {
+          mailList: mailList,
+          emailInfo: emailInfo
+        };
+        var url = "https://script.google.com/macros/s/AKfycbxwcvgHAzVFl_Uzx0N8saGU5BxcoI-XGf2glETvYWKwGMO-TBc/exec";
+        var options = {
+          method: 'post',
+          body: JSON.stringify(postData),
+          json: true,
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          url: url
+        };
+
+        axios.post(url, postData)
+          .then(function (response) {
+            console.log("Success==========")
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log("ERROR==========")
+            console.log(error);
+            res.send(error)
+          });
+      } else {
         res.send("No Users Found")
       }
     });

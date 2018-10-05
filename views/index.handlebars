@@ -1,12 +1,11 @@
 <!-- Changing background image -->
 <img src="https://source.unsplash.com/1900x1080/?books" alt="background" id="login-background">
 
-
 <!-- FIRST PAGE: ask users to Sign-up or Login -->
 <div class="container" id="index-body">
     <h1 class="title center white-text">Courier</h1>
     <h6 class="letter-space-1 center white-text">Simply click and communicate</h6>
-    <div class="g-signin2" data-onsuccess="onSignIn" ></div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 </div>
 
 <!-- JQuery -->
@@ -35,7 +34,6 @@
                 });
                 if (data.emailReqLink) {
                     if (sessionStorage.getItem("couriersignin") !== null) {
-                        
                         user.emailReqLink = data.emailReqLink
                         sessionStorage.removeItem('courieruser')
                         sessionStorage.setItem('courieruser', JSON.stringify(user))
@@ -52,15 +50,12 @@
                 })
             }
         })
-
     }
 
     $(document).on("click", ".abcRioButton", function() {
         sessionStorage.setItem('couriersignin', true)
         onSignIn(googleUser)
     })
-
-    
 </script>
 
 <script src="js/html.js"></script>

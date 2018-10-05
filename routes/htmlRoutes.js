@@ -14,6 +14,7 @@ module.exports = function (app) {
     });
 
     // load Login page or all other pages
+
     app.get("/:pages", function(req, res) {
         var pageArr = ["about", "newmail", "newtemp", "setting", "usermail", "usertemp", "", "first", "index", "preview", "sending"]
         var pages = req.params.pages
