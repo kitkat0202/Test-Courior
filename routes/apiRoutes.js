@@ -51,6 +51,22 @@ module.exports = function(app) {
     });
   });
 
+  // Update Img
+  app.put("/api/img", function(req, res) {
+    db.User.update({
+      img: req.body.img
+    }, {
+      where: {
+        googleUser: req.body.googleUser
+      }
+    }).then(function(result) {
+      res.json(result);
+    })
+    .catch(function(err) {
+      res.status(400).json(err);
+    });
+  });
+
   // Create Mail Group
   app.post("/api/mailgroup", function (req, res) {
     db.MailGroup.create(req.body)
