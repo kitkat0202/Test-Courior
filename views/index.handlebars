@@ -42,6 +42,7 @@
                             window.location = "/first"
                         }
                     } else {
+                        other = user
                         other.img = profile.getImageUrl()
                         sessionStorage.removeItem('courieruser')
                         sessionStorage.setItem('courieruser', JSON.stringify(other))
