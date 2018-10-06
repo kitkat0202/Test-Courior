@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var MailList = sequelize.define("MailList", {
         name: {
             type: DataTypes.STRING,
@@ -13,10 +13,22 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        }
+        },
+        unsubscribe: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        company: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
+        },
     });
-  
-    MailList.associate = function(models) {
+
+    MailList.associate = function (models) {
         MailList.belongsTo(models.MailGroup, {
             foreignKey: {
                 allowNull: false
